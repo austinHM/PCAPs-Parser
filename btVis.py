@@ -40,10 +40,6 @@ def getDF(myList):
     dfBDADDR = pd.DataFrame({'BD Address' : list(bdADDR.keys()), 'Amount' : list(bdADDR.values())})
     dfTIME = pd.DataFrame({'Time' : list(frameTime.keys()), 'Length' : list(frameTime.values())})
     
-    print(dfEVT)
-    print('')
-    print(dfBDADDR)
-    
     # Return created Dataframes back to calling method    
     return dfEVT, dfBDADDR, dfTIME          
 
