@@ -1,10 +1,9 @@
-from turtle import clearscreen
 import pyshark
 import lib, btVis
 
-file_path = 'C:\\Users\\Austi\\OneDrive\\Desktop\\PythonPcap\\'
+file_path = 'C:\\Users\\Austi\\OneDrive\\Desktop\\PythonPcap\\Project\\'
 file_name = 'Bluetooth2.pcap'
-cap = pyshark.FileCapture(file_path + file_name, only_summaries=True)
+#cap = pyshark.FileCapture(file_path + file_name, only_summaries=True)
 
 def parse_pcap(filename, maxPacket):
     # Variables
@@ -13,7 +12,7 @@ def parse_pcap(filename, maxPacket):
     x = []
     
     # Read .pcap file
-    with pyshark.FileCapture(filename, keep_packets=False) as cap:
+    with pyshark.FileCapture(file_path + file_name, keep_packets=False) as cap:
             # Loop through entire .pcap file
             for pkt in cap:
                 
