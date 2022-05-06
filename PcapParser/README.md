@@ -18,7 +18,7 @@ List of wireshark bluetooth filter names and the corresponding protocol.
 |------------------|--------------|
 Bluetooth HCI H1| hci_h1
 Bluetooth HCI H4| hci_h4
-Bluetooth HCI| USB Transport|	hci_usb
+Bluetooth HCI USB Transport|	hci_usb
 Bluetooth Linux Monitor Transport|	hci_mon
 Bluetooth 3DS Profile|	bt3ds
 Bluetooth AMP Packet|	btamp
