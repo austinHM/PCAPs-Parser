@@ -12,7 +12,7 @@ def parse_pcap(filename, maxPacket):
     x = []
     
     # Read .pcap file
-    with pyshark.FileCapture(file_path + file_name, keep_packets=False) as cap:
+    with pyshark.FileCapture(filename, keep_packets=False) as cap:
             # Loop through entire .pcap file
             for pkt in cap:
                 
@@ -48,6 +48,7 @@ def UI(result, dfList):
     print("3: Display Captured Events")
     print("4: Dispaly Captured  BD_ADDR")
     print("5: Display Packet Length Over Time")
+    print("9: Display Test Chart")
     print("0: Exit")
         
     opt = input("Select an option: ")
@@ -85,13 +86,18 @@ def UI(result, dfList):
         btVis.graphDisplay('line', dfTIME, x = "Time", y = "Length", title="Bluetooth .pcap Time Display", text = "")
         return True
     
+    elif opt == "9":
+        
+        btVis.graphDisplay('timeline', dfTIME, x = "Time", y = "Length", title="Bluetooth .pcap Time Display Test", text = "")
+        return True
+    
     else:
         print("\nOption entered is not valid!")
         return True
         
 if __name__ == '__main__':
     # Generate list of values from packets
-    result = parse_pcap(file_name, 10) 
+    result = parse_pcap(file_path + file_name, 10) 
 
     # Initialize Dataframes
     dfEVT, dfBDADDR, dfTIME = btVis.getDF(result)
