@@ -1,5 +1,5 @@
 import pyshark
-import lib, btVis
+import lib, btVis, toJSON
 
 file_path = 'C:\\Users\\Austi\\OneDrive\\Desktop\\PythonPcap\\Project\\'
 file_name = 'Bluetooth2.pcap'
@@ -48,6 +48,7 @@ def UI(result, dfList):
     print("3: Display Captured Events")
     print("4: Dispaly Captured  BD_ADDR")
     print("5: Display Packet Length Over Time")
+    print("8: Send to JSON")
     print("9: Display Test Chart")
     print("0: Exit")
         
@@ -86,6 +87,17 @@ def UI(result, dfList):
         btVis.graphDisplay('line', dfTIME, x = "Time", y = "Length", title="Bluetooth .pcap Time Display", text = "")
         return True
     
+    elif opt == '8':
+        JSONname = input("Enter JSON file name: ")
+        if '.json' in JSONname:
+            toJSON.toJSON(JSONname, result)
+        else:
+            JSONname = JSONname + ".json"
+            toJSON.toJSON(JSONname, result)
+            
+        print(JSONname + " created!\n")
+        return True
+        
     elif opt == "9":
         
         btVis.graphDisplay('timeline', dfTIME, x = "Time", y = "Length", title="Bluetooth .pcap Time Display Test", text = "")
@@ -97,7 +109,7 @@ def UI(result, dfList):
         
 if __name__ == '__main__':
     # Generate list of values from packets
-    result = parse_pcap(file_path + file_name, 10) 
+    result = parse_pcap(file_path + file_name, 0) 
 
     # Initialize Dataframes
     dfEVT, dfBDADDR, dfTIME = btVis.getDF(result)

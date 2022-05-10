@@ -10,4 +10,4 @@ dictionary ={
 
 def toJSON(name, dataList):
     with open(name, "w") as outfile:
-        json.dump(dataList, outfile)
+        json.dump(dataList, outfile, indent=4)
